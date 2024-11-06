@@ -30,8 +30,7 @@ type ForecastResponse = {
   city: City;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const sampleResponse: ForecastResponse = {
+export const sampleForecastResponse: ForecastResponse = {
   cod: '200',
   message: 0,
   cnt: 40,

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import CityList from './CityList';
 
-export default function Home({ navigation }) {
+export default function Home() {
   return (
     <View style={styles.screen}>
-      <Text>Home Screen</Text>
-      <Button title="Details" onPress={() => navigation.navigate('Details')} />
+      <CityList />
     </View>
   );
 }
@@ -13,7 +13,5 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
