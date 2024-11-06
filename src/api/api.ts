@@ -3,7 +3,7 @@ import { WeatherIcon } from './types';
 const API_KEY = 'placeholder';
 
 export function iconUrl(code: WeatherIcon) {
-  return `https://openweathermap.org/img/wn/${code}@2x.png`;
+  return `https://openweathermap.org/img/wn/${code}@4x.png`;
 }
 
 export async function fetchData<T>(url: string) {

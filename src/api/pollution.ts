@@ -8,8 +8,7 @@ type PollutionResponse = {
   list: Pollution[];
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const samplePollutionResponse: PollutionResponse = {
+export const samplePollutionResponse: PollutionResponse = {
   coord: {
     lon: 0,
     lat: 0,
