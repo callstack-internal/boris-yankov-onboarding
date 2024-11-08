@@ -5,8 +5,7 @@ import { City, CountryCode } from './types';
 
 type DirectResponse = City[];
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const sampleDirectResponse: DirectResponse = [
+export const sampleDirectResponse: DirectResponse = [
   {
     name: 'London',
     local_names: {
@@ -287,8 +286,7 @@ type ZipResponse = {
   country: CountryCode;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const sampleZipResponse: ZipResponse = {
+export const sampleZipResponse: ZipResponse = {
   zip: 'E14',
   name: 'London',
   lat: 51.4969,
@@ -304,8 +302,7 @@ export async function fetchZip(zipCode: string, countryCode: string) {
 
 type ReverseResponse = City[];
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const sampleReverseResponse: ReverseResponse = [
+export const sampleReverseResponse: ReverseResponse = [
   {
     name: 'City of Westminster',
     local_names: {

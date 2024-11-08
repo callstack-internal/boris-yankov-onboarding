@@ -26,8 +26,7 @@ type CurrentWeatherResponse = {
   cod: number;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const sampleResponse: CurrentWeatherResponse = {
+export const sampleResponse: CurrentWeatherResponse = {
   coord: {
     lon: 0,
     lat: 0,
