@@ -149,7 +149,7 @@ export const sampleGroupWeather: GroupResponse = {
   ],
 };
 
-export async function getGroupWeather(ids: number[]) {
+export async function fetchGroupWeather(ids: number[]) {
   return fetchData<GroupResponse>(
     `https://api.openweathermap.org/data/2.5/group?id=${ids.join(',')}`,
   );

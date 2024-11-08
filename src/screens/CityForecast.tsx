@@ -1,18 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { GroupedWeather } from '../api/group';
-import { sampleForecastResponse } from '../api/forecast';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { formatDate, formatTemperature } from '../utils';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { useCityForecast } from '../data/queries';
+import { RootStackParamList } from '../../App';
 
-type Props = {
-  city: GroupedWeather;
-};
-
-export default function CityForecast({ city }: Props) {
+export default function CityForecast() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Details'>>();
+  const { data, isPending, isError, error } = useCityForecast(
+    route.params.name,
+  );
+  if (isPending) {
+    return <ActivityIndicator size="large" style={styles.progress} />;
+  }
+  if (isError) {
+    return <Text style={styles.error}>Error: {error.message}</Text>;
+  }
   return (
     <View style={styles.wrapper}>
       <Text style={styles.header}>5-day forecast</Text>
-      {sampleForecastResponse.list.map(x => (
+      {data.list.map(x => (
         <Text key={x.dt}>
           {formatDate(x.dt)} {formatTemperature(x.main.temp_max)}{' '}
           {formatTemperature(x.main.temp_min)}
@@ -29,8 +36,15 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 24,
   },
+  progress: {
+    flex: 1,
+    alignSelf: 'center',
+  },
   icon: {
     width: 128,
     height: 128,
+  },
+  error: {
+    color: 'red',
   },
 });

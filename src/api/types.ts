@@ -164,8 +164,8 @@ export type City = {
   name: string;
   coord?: Coord;
   local_names?: Record<`${string}${string}`, string>;
-  lat: number;
-  lon: number;
+  lat?: number;
+  lon?: number;
   country: CountryCode;
   state?: string;
   population?: number;

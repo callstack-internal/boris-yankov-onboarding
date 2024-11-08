@@ -3,8 +3,9 @@ import {
   StaticParamList,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
-import Details from './src/screens/Details';
+import Details, { DetailsRouteParams } from './src/screens/Details';
 import Home from './src/screens/Home';
 
 const RootStack = createNativeStackNavigator({
@@ -18,13 +19,13 @@ const RootStack = createNativeStackNavigator({
     Details: {
       screen: Details,
       options: ({ route }) => ({
-        title: route.params?.name,
+        title: (route.params as DetailsRouteParams).name,
       }),
     },
   },
 });
 
-type RootStackParamList = StaticParamList<typeof RootStack>;
+export type RootStackParamList = StaticParamList<typeof RootStack>;
 
 declare global {
   namespace ReactNavigation {
@@ -34,6 +35,12 @@ declare global {
 
 const Navigation = createStaticNavigation(RootStack);
 
+const queryClient = new QueryClient();
+
 export default function App() {
-  return <Navigation />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Navigation />
+    </QueryClientProvider>
+  );
 }

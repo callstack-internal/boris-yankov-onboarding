@@ -1,24 +1,22 @@
 import type { StaticScreenProps } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { sampleGroupWeather } from '../api/group';
+import { StyleSheet, View } from 'react-native';
 import CityForecast from './CityForecast';
 import CityWeather from './CityWeather';
 
-export type Props = StaticScreenProps<{
+export type DetailsRouteParams = {
   id: number;
   name: string;
-}>;
+};
 
-export default function Details({ route }: Props) {
-  const city = sampleGroupWeather.list.find(c => c.id === route.params.id);
-  if (!city) {
-    return <Text>City not found</Text>;
-  }
+export type DetailsScreenProps = StaticScreenProps<DetailsRouteParams>;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function Details({ route }: DetailsScreenProps) {
   return (
     <View style={styles.screen}>
-      <CityWeather city={city} />
-      <CityForecast city={city} />
+      <CityWeather />
+      <CityForecast />
     </View>
   );
 }
@@ -27,12 +25,5 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: 'white',
-  },
-  city: {
-    fontSize: 32,
-  },
-  icon: {
-    width: 128,
-    height: 128,
   },
 });

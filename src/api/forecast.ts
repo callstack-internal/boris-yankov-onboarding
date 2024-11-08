@@ -1491,8 +1491,8 @@ export const sampleForecastResponse: ForecastResponse = {
   },
 };
 
-export async function fetchForecast(city: string | number) {
+export async function fetchForecast(name: string) {
   return fetchData<ForecastResponse>(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${city}`,
+    `https://api.openweathermap.org/data/2.5/forecast?q=${name}`,
   );
 }

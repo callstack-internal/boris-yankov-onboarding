@@ -14,9 +14,12 @@ export default function CityItem({ city }: Props) {
   const navigation = useNavigation();
   return (
     <PressableScale
-      onPress={() =>
-        navigation.navigate('Details', { id: city.id, name: city.name })
-      }>
+      onPress={() => {
+        navigation.navigate('Details', {
+          id: city.id,
+          name: city.name,
+        });
+      }}>
       <View style={styles.card}>
         <View>
           <Text style={styles.name}>
